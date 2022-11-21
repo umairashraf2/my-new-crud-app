@@ -1,0 +1,32 @@
+{% extends 'index.html' %} {% load crispy_forms_tags %}{% block heading %}
+<a class="btn btn-success mx-2" href="/read">Employees List</a>
+<a class="btn btn-info mx-2" href="/logout">Log Out</a>
+{% endblock %} {% block content %}
+<div class="container mt-4">
+	<div class="card p-4 m-3">
+		<form action="/" method="post" autocomplete="off">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col-md-6">{{form.name|as_crispy_field}}</div>
+				<div class="col-md-6">{{form.email|as_crispy_field}}</div>
+			</div>
+			{{form.phone|as_crispy_field}} {{form.address|as_crispy_field}}
+
+			<div class="row">
+				<div class="col-md-12">
+					<button
+						type="submit"
+						class="btn btn-success btn-block btn-lg"
+					>
+						Add
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %} {% block main %}
+<p>User <b>:</b> {{request.user}}</p>
+{% endblock %} {% block search %}
+<h1><b>Add Employee</b></h1>
+{% endblock %} {% block title %}Add Employee{% endblock %}
