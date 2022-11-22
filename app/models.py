@@ -7,7 +7,7 @@ class Employee(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     address = models.TextField()
-    phone = models.IntegerField(max_length=11   )
+    phone = models.IntegerField()
     myid = models.AutoField(primary_key=True)
     
     
