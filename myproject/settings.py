@@ -12,12 +12,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 import environ
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(DEBUG=(bool, False))
+env = environ.Env(DEBUG=(bool, True))
 # reading .env file
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
@@ -93,8 +92,8 @@ DATABASES = {
         "NAME": env("DB_NAME"),
     }
 }
-if DEBUG is False:
-    DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# if DEBUG is False:
+#     DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
